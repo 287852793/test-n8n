@@ -5,6 +5,10 @@ test n8n with docker
 
 Starts n8n with PostgreSQL as database.
 
+mcp-proxy 镜像是将 mcp-server 的 stdio 服务 转为 sse 服务供 n8n 使用  
+  
+mcp-proxy:0.0.1 仅 python 环境，安装了 mcp-proxy 工具
+
 ## Start
 
 To start n8n with PostgreSQL simply start docker-compose by executing the following

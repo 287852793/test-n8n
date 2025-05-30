@@ -25,7 +25,7 @@ services:
       retries: 10
 
   n8n:
-    image: n8nio/n8n:1.87.2
+    image: n8nio/n8n:1.95.2
     restart: always
     container_name: n8n
     environment:
@@ -45,3 +45,12 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+
+  mcp-proxy:
+    image: 172.20.20.187/mcp-proxy:0.0.1
+    container_name: mcp-proxy
+    network_mode: host
+    restart: unless-stopped
+    ports:
+      - 8891:8888
+      - 8096:8096
