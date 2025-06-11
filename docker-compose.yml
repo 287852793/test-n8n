@@ -16,7 +16,7 @@ services:
       - POSTGRES_NON_ROOT_USER
       - POSTGRES_NON_ROOT_PASSWORD
     volumes:
-      - db_storage:/var/lib/postgresql/data
+      - $PWD/volumes/data_postgres:/var/lib/postgresql/data
       - ./init-data.sh:/docker-entrypoint-initdb.d/init-data.sh
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -h localhost -U ${POSTGRES_USER} -d ${POSTGRES_DB}']
@@ -41,7 +41,7 @@ services:
     links:
       - postgres
     volumes:
-      - n8n_storage:/home/node/.n8n
+      - $PWD/volumes/data_n8n:/home/node/.n8n
     depends_on:
       postgres:
         condition: service_healthy
